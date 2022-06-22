@@ -16,11 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SmartMedChallenge.Application\SmartMedChallenge.Application.csproj" />
+    <ProjectReference Include="..\SmartMedChallenge.Data\SmartMedChallenge.Data.csproj" />
   </ItemGroup>
 
 </Project>

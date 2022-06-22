@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SmartMedChallenge.API.Configurations;
 
 namespace SmartMedChallenge.API
 {
@@ -24,12 +18,39 @@ namespace SmartMedChallenge.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                );
+            });
+
+            // Application Context
+            services.AddSmartMedChallengeContext(Configuration);
+
+            // AutoMapper Configuration
+            services.AddAutoMapperConfiguration();
 
             services.AddControllers();
+
+            // Swagger Configuration
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartMedChallenge.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo()
+                                   {
+                                        Title = "API - SmartMedChallenge",
+                                        Version = "v1",
+                                        Description = "This API was developed as a technical assessment for Smart Med B.V. recruitment process.",
+                                        Contact = new OpenApiContact() { Name = "Marcos Paulo Figueiredo de Almeida", Email = "mpalmeida88@gmail.com"}
+                                    });
             });
+
+            // Resolve Dependencies
+            services.AddRepositoryConfiguration();
+            services.AddServiceConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +66,7 @@ namespace SmartMedChallenge.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
