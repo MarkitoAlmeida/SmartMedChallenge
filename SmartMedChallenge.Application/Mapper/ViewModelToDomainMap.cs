@@ -8,7 +8,7 @@ namespace SmartMedChallenge.Application.Mapper
     {
         public ViewModelToDomainMap()
         {
-            CreateMap<MedicationViewModel, Medication>();
+            CreateMap<CreateMedicationViewModel, Medication>();
         }
     }
 }

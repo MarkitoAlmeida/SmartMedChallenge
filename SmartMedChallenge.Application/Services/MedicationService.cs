@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using SmartMedChallenge.Application.Interfaces;
 using SmartMedChallenge.Application.Interfaces.Repositories;
 using SmartMedChallenge.Application.Interfaces.Services;
@@ -8,9 +7,6 @@ using SmartMedChallenge.Application.ViewModels.MedicationViewModels;
 using SmartMedChallenge.Domain.Models;
 using SmartMedChallenge.Domain.Models.Validations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartMedChallenge.Application.Services
