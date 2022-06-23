@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SmartMedChallenge.Domain.Models
+﻿namespace SmartMedChallenge.Domain.Models
 {
     public class Medication : Entity
     {
         #region Constructor
 
+        public Medication() { }
 
+        public Medication(string name,
+                          int quantity)
+        {
+            Name = name;
+            Quantity = quantity;
+        }
 
         #endregion
 

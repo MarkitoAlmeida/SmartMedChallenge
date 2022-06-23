@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartMedChallenge.Data.Mapping;
 using SmartMedChallenge.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartMedChallenge.Data.Context
 {
@@ -17,7 +13,7 @@ namespace SmartMedChallenge.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Add mapping
+            modelBuilder.ApplyConfiguration(new MedicationMap());
 
             base.OnModelCreating(modelBuilder);
         }
