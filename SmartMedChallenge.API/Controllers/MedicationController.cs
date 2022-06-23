@@ -12,7 +12,7 @@ namespace SmartMedChallenge.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MedicationController : ControllerBase
+    public class MedicationController : BaseController
     {
         #region Properties
 
@@ -57,7 +57,24 @@ namespace SmartMedChallenge.API.Controllers
 
         #region Post
 
+        /// <summary>
+        /// Create a new medication
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost(Name = "CreateMedication")]
+        public async Task<IActionResult> CreateMedication(CreateMedicationViewModel request)
+        {
+            if (!ModelState.IsValid)
+                return CustomResponse(ModelState);
 
+            var result = await _medicationService.CreateMedication(request);
+
+            if (result is null)
+                return CustomResponse();
+
+            return CustomResponse(result);
+        }
 
         #endregion
 
@@ -69,7 +86,21 @@ namespace SmartMedChallenge.API.Controllers
 
         #region Delete
 
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <param name="medicationId"></param>
+        /// <returns></returns>
+        [HttpDelete(Name = "DeleteMedication")]
+        public async Task<IActionResult> DeleteMedication(Guid medicationId)
+        {
+            var result = await _medicationService.DeleteMedication(medicationId);
 
+            if (!result)
+                return CustomResponse();
+            
+            return CustomResponse(result);
+        }
 
         #endregion
     }
