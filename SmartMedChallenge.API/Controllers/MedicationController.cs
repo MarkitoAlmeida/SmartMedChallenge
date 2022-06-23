@@ -89,11 +89,11 @@ namespace SmartMedChallenge.API.Controllers
         #region Delete
 
         /// <summary>
-        /// Create a new user
+        /// Hard delete a medication
         /// </summary>
         /// <param name="medicationId"></param>
         /// <returns></returns>
-        [HttpDelete(Name = "DeleteMedication")]
+        [HttpDelete("{medicationId:guid}", Name = "DeleteMedication")]
         public async Task<IActionResult> DeleteMedication(Guid medicationId)
         {
             var result = await _medicationService.DeleteMedication(medicationId);

@@ -33,6 +33,7 @@ namespace SmartMedChallenge.Data.Repositories
                                     .Where(m => !m.Excluded
                                            && m.Active
                                            && m.Quantity > 0)
+                                    .OrderBy(m => m.Name)
                                     .ToListAsync();
         }
 
