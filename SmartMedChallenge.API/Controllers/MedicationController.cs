@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SmartMedChallenge.Application.Interfaces;
 using SmartMedChallenge.Application.Interfaces.Repositories;
 using SmartMedChallenge.Application.Interfaces.Services;
 using SmartMedChallenge.Application.ViewModels.MedicationViewModels;
@@ -24,9 +25,10 @@ namespace SmartMedChallenge.API.Controllers
 
         #region Constructor
 
-        public MedicationController(IMedicationService medicationService,
+        public MedicationController(INotificator notificator,
+                                    IMedicationService medicationService,
                                     IMedicationRepository medicationRepository,
-                                    IMapper mapper)
+                                    IMapper mapper) : base(notificator)
         {
             _medicationService = medicationService;
             _medicationRepository = medicationRepository;
