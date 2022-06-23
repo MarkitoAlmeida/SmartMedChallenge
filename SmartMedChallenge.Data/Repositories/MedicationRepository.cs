@@ -36,14 +36,14 @@ namespace SmartMedChallenge.Data.Repositories
                                     .ToListAsync();
         }
 
-        public async Task<List<Medication>> GetMedicationByName(string medicationName)
+        public async Task<Medication> GetMedicationByName(string medicationName)
         {
             return await _context.Medications
                                     .Where(m => m.Name.Equals(medicationName)
                                            && !m.Excluded
                                            && m.Active
                                            && m.Quantity > 0)
-                                    .ToListAsync();
+                                    .FirstOrDefaultAsync();
         }
 
         public async Task<Medication> GetMedictionById(Guid medicationId)

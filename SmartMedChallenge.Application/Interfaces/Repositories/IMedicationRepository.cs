@@ -8,7 +8,7 @@ namespace SmartMedChallenge.Application.Interfaces.Repositories
     public interface IMedicationRepository
     {
         Task<List<Medication>> GetAllMedications();
-        Task<List<Medication>> GetMedicationByName(string medicationName);
+        Task<Medication> GetMedicationByName(string medicationName);
         Task<Medication> GetMedictionById(Guid medicationId);
         Task Insert(Medication medication);
         Task Delete(Medication medication);
