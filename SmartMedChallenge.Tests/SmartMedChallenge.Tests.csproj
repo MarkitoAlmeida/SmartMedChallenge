@@ -22,12 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Collections\" />
-    <Folder Include="Fixtures\" />
-    <Folder Include="UnitTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SmartMedChallenge.Application\SmartMedChallenge.Application.csproj" />
     <ProjectReference Include="..\SmartMedChallenge.Domain\SmartMedChallenge.Domain.csproj" />
   </ItemGroup>
